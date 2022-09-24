@@ -161,15 +161,6 @@ async function startjobotz() {
 │➳ LEAVING FROM
 │➳ ${metadata.subject}
 ╰━ ━ ━ ━ ━ ━ ━ ━ ━ ━•⩵꙰ཱི࿐
- ▬▭▬▭▬ ✦✧✦ ▬▭▬▭▬
-╭━━•›〘 SUBSCRIBE 〙
-│➳ Channel YouTube
-│➳ AMPAZ || REACTION
-│➳ https://youtube.com/channel/UC70hSzmA3HAlSUilSDePr8w
-╰━ ━ ━ ━ ━ ━ ━ ━ ━ ━•⩵꙰ཱི࿐
- ▬▭▬▭▬ ✦✧✦ ▬▭▬▭▬
-
-© AMPAZ || REACT
 `
                   jobotz.sendMessage(anu.id, { image: { url: pp_user }, contextInfo: { mentionedJid: [num] }, caption: anunya2 })
                 }

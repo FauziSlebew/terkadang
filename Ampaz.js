@@ -702,6 +702,70 @@ m.reply(`╭━━•›ꪶ ཻུ۪۪ꦽꦼ̷⸙ ━ ━ ━ ━ ꪶ ཻུ۪۪
 jobotz.sendMessage(m.chat, {audio: asa, mimetype: 'audio/mpeg', ptt:true })
 }
 break
+case prefix+'createcp':
+let usern = `neff${makeid(6)}`
+let domain = q.split('|')[0] 
+let pekeg = q.split('|')[1]
+if (args.length < 2) return reply(`Kirim perintah ${command} domain|package`)
+reply("Creating please wait....")
+
+axios.get(`https://${hostwhm}:2087/json-api/createacct?api.version=1&username=${usern}&contactemail=shymex404@gmail.com&plan=${pekeg}&domain=${domain}`, authWhm)
+.then(response => {     
+     let np = response.data
+          if (np.metadata.result == 0) {
+           reply(np.metadata.reason)
+          } else {
+           let dsta = np.metadata.output.raw;
+            var substr = dsta.substring(
+              dsta.toString().indexOf("+===================================+")
+            ); //substr = 'word. Hello!'
+            let nefft = substr.split("| Language: en")[0];
+            reply(`${nefft}\n\nLogin : https://${hostwhm}:2087`)
+  }});
+break
+case prefix+'listcp':
+reply('Wait Getting List Account info....')
+axios.get(`https://${hostwhm}:2087/json-api/listaccts?api.version=1`, authWhm)
+  .then((risol) => {
+ let lisol = risol.data
+ var ttdy = lisol.data.acct
+let ogh = `*── 「 LIST CPANEL 」 ──*\nTotal Akun : ${ttdy.length}\n`
+for (let i = 0; i < ttdy.length; i++) {
+ogh += `
+\n
+─────[\`\`\` ${ttdy[i].user} \`\`\` ]────────
+*▢ Maxsub* : ${ttdy[i].maxsub}
+*▢ Maxsql* : ${ttdy[i].maxsql}
+*▢ Startdate* : ${ttdy[i].startdate}
+*▢ Disklimit* : ${ttdy[i].disklimit}
+*▢ Maxlst* : ${ttdy[i].maxlst}
+*▢ Plan* : ${ttdy[i].plan}
+*▢ Owner*: ${ttdy[i].owner}
+*▢ Ip* : ${ttdy[i].ip}
+*▢ Domain* : ${ttdy[i].domain}
+*▢ Diskused* : ${ttdy[i].diskused}
+*▢ Maxaddons* : ${ttdy[i].maxaddons}
+*▢ Suspendreason* : ${ttdy[i].suspendreason}
+─────────────────\n\n`
+}
+reply(ogh)
+})
+				break
+case prefix+'terminate':
+if (args.length < 2) return reply(`Kirim perintah ${command} username`)
+reply('Wait Terminating Account....')
+axios
+    .get(
+      `https://${hostwhm}:2087/json-api/removeacct?api.version=1&username=${args[1]}`, authWhm )
+    .then((e) => {
+      if ([1, "1"].includes(e.data?.metadata?.result))
+      reply(`Done User ${args[1]} Telah di Terminate`);
+      else {
+        reply(e.metadata);
+        console.log(e.data);
+      }
+    })
+break
 
 case 'ajg': case 'anjing': case 'memek': case 'kntl': case 'ngentot': case 'babi': case 'gblk': case 'goblok': {
 m.reply('Jangan Toxic Cok')
@@ -3625,6 +3689,8 @@ break
 │➳ ${prefix}𝚍𝚋𝚒𝚗𝚊𝚛𝚢
 │➳ ${prefix}𝚜𝚝𝚢𝚕𝚎𝚝𝚎𝚡𝚝
 │➳ ${prefix}𝚜𝚖𝚎𝚖𝚎
+│➳ ${prefix}createcp
+│➳ ${prefix}listcp
 ╰─────────────────╮
 𐂠▰▱𝙁𝘼𝙐𝙕𝙄𝆬▱▰𐂠
 ╭─────────────────╯
